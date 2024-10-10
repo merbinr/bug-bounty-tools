@@ -5,13 +5,16 @@ on:
     branches:
       - main
 
+permissions:
+  id-token: write
+  packages: write
+
+concurrency:
+  group: "image-building"
+
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    services:
-      docker:
-        options: --privileged
 
     steps:
       # Step 1: Checkout code
@@ -26,14 +29,15 @@ jobs:
 
       # Step 3: Log in to Docker Hub or GitHub Container Registry (GHCR)
       - name: Log in to Docker Hub
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
+          registry: ghcr.io
           username: ${{ github.actor }} 
           password: ${{ secrets.GITHUB_TOKEN }}
 
       # Step 4: Set up Docker Buildx
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
+        uses: docker/setup-buildx-action@v3
         with:
           install: true
 
