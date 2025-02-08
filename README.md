@@ -1,2 +1,3 @@
-# bug-bounty-tools
-A docker image with common bug bounty tools
+# Scripts for bug bounty
+### Usage 
+```sh script.sh <domain>```
