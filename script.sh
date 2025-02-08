@@ -1,4 +1,4 @@
-!#/bin/bash
+#!/bin/bash
 
 # Usage: ./script.sh <domain>
 set -e
