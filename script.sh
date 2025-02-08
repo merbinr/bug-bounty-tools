@@ -44,3 +44,6 @@ cat js_finder.txt  wayback_urls.txt | grep $DOMAIN | grep -E "\.js$|\.js\?" | so
 python3 download_js_files.py -i js_urls_file.txt -o js_file_output -t 5
 
 python3 endpoints_scraper.py -i js_file_output -o endpoints_from_js.txt
+
+# Cleaning up all scripts
+rm -rf *.py
